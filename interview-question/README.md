@@ -1,5 +1,12 @@
 # Factory Four Interview Question
 
+## Packages Used
+
+- Axios
+- Material UI Core
+- Material UI Icons
+- GH-Pages
+
 ## Available Scripts
 
 In the project directory, you can run:
