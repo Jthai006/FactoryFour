@@ -33,7 +33,7 @@ export default class Dashboard extends Component {
         try {
             setInterval(async () => {
                 this.fetchAPI();
-            }, 15000); // <----- adjust time interval here
+            }, 15000); // <----- adjust time interval here 
             } catch (e) {
             console.log(e);
         }
