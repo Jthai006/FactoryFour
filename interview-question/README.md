@@ -3,9 +3,12 @@
 ## Packages Used
 
 - Axios
+  - To make HTTP get requests
 - Material UI Core
+  - To develop Appbar component and Card Components as well as the Grid layout
 - Material UI Icons
 - GH-Pages
+  -To deploy to Github pages
 
 ## Available Scripts
 
