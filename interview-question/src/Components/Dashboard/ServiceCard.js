@@ -7,11 +7,12 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
-  root: {
+  card: {
     minHeight: "180px",
+    width: '100%'
   },
   title: {
-    fontSize: 14,
+    // fontSize: 14,
   },
 });
 
@@ -36,7 +37,7 @@ export default function ServiceCard(props) {
   }
   
   return (
-    <Card className={classes.root} variant="outlined">
+    <Card className={classes.card} variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h2">
           {props.name.toUpperCase()}

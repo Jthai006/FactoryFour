@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import CardContainer from './CardContainer';
+import DenseAppBar from '../test/AppBar';
 
 export default class Dashboard extends Component {
     constructor(props){
@@ -117,7 +118,10 @@ export default class Dashboard extends Component {
 
     render() {
         return (
-            <CardContainer data={this.state}></CardContainer>
-        )
+            <div>
+                <DenseAppBar></DenseAppBar>
+                <CardContainer data={this.state}></CardContainer>
+            </div>
+        );
     }
 }

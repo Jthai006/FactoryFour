@@ -1,25 +1,25 @@
 import React from 'react'
 import ServiceCard from './ServiceCard';
-import Grid from "@material-ui/core/Grid";
+import {Grid, Paper} from "@material-ui/core/";
 
 export default function CardContainer(props) {
     return (
         <Grid
             container
-            spacing={0}
-            alignItems="center"
             justify="center"
             style={{ minHeight: "100vh" }}
         >
-            <Grid container alignItems="center" item xs={11} style={{minHeight: "100vh"}}>
-            <Grid container spacing={3}>
+            <Grid container alignItems="flex-start" item xs={11} style={{marginTop:'10vh',minHeight: "100vh"}}>
+            <Grid container justify="center" spacing={4}>
                 {Object.keys(props.data).map((item) => {
                 return (
-                    <Grid lg={2} item>
-                    <ServiceCard
-                        name={item}
-                        data={props.data[item]}
-                    ></ServiceCard>
+                    <Grid sm={4} md={3} lg={2} item>
+                        <Paper elevation={10}>
+                        <ServiceCard
+                            name={item}
+                            data={props.data[item]}
+                        ></ServiceCard>
+                        </Paper>
                     </Grid>
                 );
                 })}
