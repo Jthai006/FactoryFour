@@ -2,6 +2,7 @@ import React from 'react'
 import ServiceCard from './ServiceCard';
 import {Grid, Paper} from "@material-ui/core/";
 
+//Grid layout for card components
 export default function CardContainer(props) {
     return (
         <Grid

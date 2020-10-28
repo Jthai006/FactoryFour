@@ -10,24 +10,40 @@ const useStyles = makeStyles({
     width: '100%'
   },
 });
+//Format unix timestamp to 24 hour format
+function formatDate(unixDate) {
+  let date = new Date(unixDate);
+  let hours = date.getHours();
+  let minutes = "0" + date.getMinutes();
+  let seconds = "0" + date.getSeconds();
+  let timestamp = hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+  return timestamp;
+}
 
+//Individual Service Card Component
 export default function ServiceCard(props) {
   const classes = useStyles();
-  let status = '';
-  let color = '';
+
+  let status = 'Error';
+  let color = 'Red';
+  let serviceName = props.name.toUpperCase();
   let timestamp = '';
+  let hostname = '';
+  let errorStatus = '';
+  let errorMessage = '';
+
+  //Check if props are empty, if not assign correct variables
   if (props.data.message !== undefined) {
     if (props.data.message.includes("Healthy")) {
       status = "Healthy";
       color = "Green";
-      let date = new Date(props.data.time );
-      let hours = date.getHours();
-      let minutes = "0" + date.getMinutes();
-      let seconds = "0" + date.getSeconds();
-      timestamp = hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+      hostname = props.data.hostname;
+      timestamp = formatDate(props.data.time);
     } else {
-      status = "Error";
-      color = "Red";
+      if(props.data.error !== undefined){
+        errorStatus = props.data.error.status;
+        errorMessage = props.data.error.statusText;
+      }
     }
   }
   
@@ -35,7 +51,7 @@ export default function ServiceCard(props) {
     <Card className={classes.card} variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h2">
-          {props.name.toUpperCase()}
+          {serviceName}
         </Typography>
         <Typography
           style={{ color: "White", backgroundColor: color }}
@@ -44,21 +60,22 @@ export default function ServiceCard(props) {
           {status}
         </Typography>
         <Typography variant="body2" component="p">
-          {props.data.hostname}
+          {hostname}
         </Typography>
         <Typography variant="body2" component="p">
           {timestamp}
         </Typography>
+        {/* On Error/Outage display outage message */}
         {status === "Error" ? (
           <div>
             <Typography style={{ color: "Red" }} variant="h6" component="p">
               OUTAGE
             </Typography>
             <Typography style={{ color: "Red" }} variant="body2" component="p">
-              {props.data.error.status}
+              {errorStatus}
             </Typography>
             <Typography style={{ color: "Red" }} variant="body2" component="p">
-              {props.data.error.statusText}
+              {errorMessage}
             </Typography>
           </div>
         ) : null}

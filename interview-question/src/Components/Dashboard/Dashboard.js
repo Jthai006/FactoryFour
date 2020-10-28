@@ -27,19 +27,21 @@ export default class Dashboard extends Component {
             workflows: {},
         };
     }
+    //On mount fetch API's and set timer for 15 seconds after which fetchAPI will be called again
     componentDidMount() {
         this.fetchAPI()
         try {
             setInterval(async () => {
                 this.fetchAPI();
-            }, 15000);
+            }, 15000); // <----- adjust time interval here
             } catch (e) {
             console.log(e);
         }
         
         
     }
-
+    //Make Get request for all 18 endpoints
+    //Used Heroku Cors Anywhere as proxy 
     fetchAPI() {
         axios
             .get("https://api.factoryfour.com/accounts/health/status")
