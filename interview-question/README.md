@@ -5,7 +5,9 @@
 - Axios
   - To make HTTP get requests
 - Material UI Core
-  - To develop Appbar component and Card Components as well as the Grid layout
+  - To develop Appbar component 
+  - Card Components 
+  - Grid layout and Responsiveness
 - Material UI Icons
 - GH-Pages
   - To deploy to Github pages
