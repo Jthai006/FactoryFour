@@ -8,18 +8,10 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    minHeight: "15vh",
-  },
-  bullet: {
-    display: "block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
+    minHeight: "180px",
   },
   title: {
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
   },
 });
 
@@ -46,7 +38,7 @@ export default function ServiceCard(props) {
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
-        <Typography variant="h4" component="h2">
+        <Typography variant="h5" component="h2">
           {props.name.toUpperCase()}
         </Typography>
         <Typography
@@ -62,13 +54,17 @@ export default function ServiceCard(props) {
           {timestamp}
         </Typography>
         {status === "Error" ? (
-          <Typography
-            style={{ color: "Red" }}
-            variant="h5"
-            component="p"
-          >
-            OUTAGE
-          </Typography>
+          <div>
+            <Typography style={{ color: "Red" }} variant="h7" component="p">
+              OUTAGE
+            </Typography>
+            <Typography style={{ color: "Red" }} variant="body2" component="p">
+              {props.data.error.status}
+            </Typography>
+            <Typography style={{ color: "Red" }} variant="body2" component="p">
+              {props.data.error.statusText}
+            </Typography>
+          </div>
         ) : null}
       </CardContent>
     </Card>

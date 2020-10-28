@@ -28,13 +28,13 @@ export default class Dashboard extends Component {
     }
     componentDidMount() {
         this.fetchAPI()
-        // try {
-        //   setInterval(async () => {
-        //     this.fetchAPI();
-        //   }, 15000);
-        // } catch (e) {
-        //   console.log(e);
-        // }
+        try {
+            setInterval(async () => {
+                this.fetchAPI();
+            }, 15000);
+            } catch (e) {
+            console.log(e);
+        }
         
         
     }
@@ -71,7 +71,7 @@ export default class Dashboard extends Component {
         axios
             .get("https://cors-anywhere.herokuapp.com/https://api.factoryfour.com/invites/health/status")
             .then((res) => this.setState({ invites: res.data }))
-            .catch((error) => {this.setState({ invites: {success: false, message:'error'}})});
+            .catch((error) => {this.setState({ invites: {success: false, message:'error',error: error.response}})});
         axios
             .get("https://api.factoryfour.com/media/health/status")
             .then((res) => this.setState({ media: res.data }))
@@ -79,7 +79,7 @@ export default class Dashboard extends Component {
         axios
             .get("https://cors-anywhere.herokuapp.com/https://api.factoryfour.com/messages/health/status")
             .then((res) => this.setState({ messages: res.data }))
-            .catch((error) => {this.setState({ messages: {success: false, message:'error'}})});
+            .catch((error) => {this.setState({ messages: {success: false, message:'error',error: error.response}})});
         axios
             .get("https://api.factoryfour.com/namespaces/health/status")
             .then((res) => this.setState({ namespaces: res.data }))
@@ -107,7 +107,7 @@ export default class Dashboard extends Component {
         axios
             .get("https://cors-anywhere.herokuapp.com/https://api.factoryfour.com/users/health/status")
             .then((res) => this.setState({ users: res.data }))
-            .catch((error) => {this.setState({ users: {success: false, message:'error'}})});
+            .catch((error) => {this.setState({ users: {success: false, message:'error',error: error.response}})});
         axios
             .get("https://api.factoryfour.com/workflows/health/status")
             .then((res) => this.setState({ workflows: res.data }))
@@ -117,9 +117,7 @@ export default class Dashboard extends Component {
 
     render() {
         return (
-            <div>
-                <CardContainer data={this.state}></CardContainer>
-            </div>
+            <CardContainer data={this.state}></CardContainer>
         )
     }
 }
