@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import CardContainer from './CardContainer';
-import DenseAppBar from '../test/AppBar';
+import DenseAppBar from '../AppBar/AppBar';
 
 export default class Dashboard extends Component {
     constructor(props){

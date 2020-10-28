@@ -11,9 +11,9 @@ export default function CardContainer(props) {
         >
             <Grid container alignItems="flex-start" item xs={11} style={{marginTop:'10vh',minHeight: "100vh"}}>
             <Grid container justify="center" spacing={4}>
-                {Object.keys(props.data).map((item) => {
+                {Object.keys(props.data).map((item,i) => {
                 return (
-                    <Grid sm={4} md={3} lg={2} item>
+                    <Grid key={i} sm={4} md={3} lg={2} item>
                         <Paper elevation={10}>
                         <ServiceCard
                             name={item}

@@ -1,18 +1,13 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   card: {
     minHeight: "180px",
     width: '100%'
-  },
-  title: {
-    // fontSize: 14,
   },
 });
 
@@ -56,7 +51,7 @@ export default function ServiceCard(props) {
         </Typography>
         {status === "Error" ? (
           <div>
-            <Typography style={{ color: "Red" }} variant="h7" component="p">
+            <Typography style={{ color: "Red" }} variant="h6" component="p">
               OUTAGE
             </Typography>
             <Typography style={{ color: "Red" }} variant="body2" component="p">
